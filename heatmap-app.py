@@ -27,9 +27,9 @@ def run_docker_container(PATH_TO_PROJECT, INPUT_PATH, OUTPUT_PATH):
 
 # Define the layout of the form
 layout = [
-    [sg.Text('Project folder path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='projPath', default_text='/Users/petermenzies/Projects/heatmaps/app/heatmap-app-test'), sg.FolderBrowse(target='projPath', button_color='#37373C')],
-    [sg.Text('Input path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='inputPath', default_text='/Users/petermenzies/Projects/heatmaps/app/heatmap-app-test/data-in'), sg.FolderBrowse(target='inputPath', button_color='#37373C')],
-    [sg.Text('Ouput path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='outputPath', default_text='/Users/petermenzies/Projects/heatmaps/app/heatmap-app-test/data-out'), sg.FolderBrowse(target='outputPath', button_color='#37373C')],
+    [sg.Text('Project folder path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='projPath'), sg.FolderBrowse(target='projPath', button_color='#37373C')],
+    [sg.Text('Input path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='inputPath'), sg.FolderBrowse(target='inputPath', button_color='#37373C')],
+    [sg.Text('Ouput path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='outputPath'), sg.FolderBrowse(target='outputPath', button_color='#37373C')],
     [sg.Text('Resolution:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='200', key='resolution')],
     [sg.Text('Area factor:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='1', key='areaFactor')],
     [sg.Text('Unique ID field:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='response_id', key='uniqueIdField')],
