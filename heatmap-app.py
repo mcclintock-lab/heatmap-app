@@ -25,18 +25,19 @@ def run_docker_container(PATH_TO_PROJECT, INPUT_PATH, OUTPUT_PATH):
 
 # Define the layout of the form
 layout = [
-    [sg.Text('Project folder path:'), sg.InputText(key='projPath'), sg.FolderBrowse(target='projPath')],
-    [sg.Text('Input path:'), sg.InputText(key='inputPath'), sg.FolderBrowse(target='inputPath')],
-    [sg.Text('Ouput path:'), sg.InputText(key='outputPath'), sg.FolderBrowse(target='outputPath')],
-    [sg.Text('Resolution:'), sg.InputText(default_text='200', key='resolution')],
-    [sg.Text('Unique ID field:'), sg.InputText(default_text='response_id', key='uniqueIdField')],
-    [sg.Text('Importance field:'), sg.InputText(default_text='value', key='importanceField')],
-    [sg.Text('All touched small:'), sg.InputText(default_text='true', key='allTouchedSmall')],
-    [sg.Button('Submit'), sg.Button('Cancel')]
+    [sg.Text('Project folder path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='projPath'), sg.FolderBrowse(target='projPath', button_color='#37373C')],
+    [sg.Text('Input path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='inputPath'), sg.FolderBrowse(target='inputPath', button_color='#37373C')],
+    [sg.Text('Ouput path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='outputPath'), sg.FolderBrowse(target='outputPath', button_color='#37373C')],
+    [sg.Text('Resolution:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='200', key='resolution')],
+    [sg.Text('Area factor:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='1', key='areaFactor')],
+    [sg.Text('Unique ID field:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='response_id', key='uniqueIdField')],
+    [sg.Text('Importance field:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='value', key='importanceField')],
+    [sg.Text('All touched small:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='true', key='allTouchedSmall')],
+    [sg.Button('Submit', pad=(5,12), button_color='#37373C'), sg.Button('Cancel', pad=(5,12), button_color='#37373C')]
 ]
 
 # Create the window
-window = sg.Window('User Input Form', layout, size=(475, 210))
+window = sg.Window('Generate Heatmap', layout, size=(475, 290), background_color='#181818')
 
 # Read the form
 while True:
@@ -47,6 +48,7 @@ while True:
     inputPath = values['inputPath']
     outputPath = values['outputPath']
     resolution = values['resolution']
+    areaFactor = values['areaFactor']
     uniqueIdField = values['uniqueIdField']
     importanceField = values['importanceField']
     allTouchedSmall = values['allTouchedSmall']
@@ -71,7 +73,7 @@ while True:
         else:
             config += f'{{"infile": "/data/in/{shp}"}}'
 
-    config += '],"default": {"outPath": "/data/out","outResolution":' + resolution + f',"areaFactor": 1,"uniqueIdField":"' + uniqueIdField + f'","importanceField":"' + importanceField + '","logToFile": true,"allTouchedSmall":' + allTouchedSmall + ',"overwrite": true}}'
+    config += '],"default": {"outPath": "/data/out","outResolution":' + resolution + ',"areaFactor":' + areaFactor + ',"uniqueIdField":"' + uniqueIdField + '","importanceField":"' + importanceField + '","logToFile": true,"allTouchedSmall":' + allTouchedSmall + ',"overwrite": true}}'
 
     # add config.json to project folder and run the project
     os.system(f'touch {projPath}/config.json')

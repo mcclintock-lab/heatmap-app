@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pyinstaller --onefile --paths=./.venv/lib/python3.11/site-packages heatmap-app.py
+pyinstaller --path=./.venv/lib/python3.11/site-packages --windowed --icon=heatmap-icon.ico heatmap-app.py
