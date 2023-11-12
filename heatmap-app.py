@@ -27,14 +27,14 @@ def run_docker_container(PATH_TO_PROJECT, INPUT_PATH, OUTPUT_PATH):
 
 # Define the layout of the form
 layout = [
-    [sg.Text('Project folder path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='projPath'), sg.FolderBrowse(target='projPath', button_color='#37373C')],
-    [sg.Text('Input path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='inputPath'), sg.FolderBrowse(target='inputPath', button_color='#37373C')],
-    [sg.Text('Ouput path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='outputPath'), sg.FolderBrowse(target='outputPath', button_color='#37373C')],
+    [sg.Text('Project folder path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='projPath', tooltip=' Where you want the config.json file to be saved '), sg.FolderBrowse(target='projPath', button_color='#37373C')],
+    [sg.Text('Input path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='inputPath', tooltip=' where your shapes are saved '), sg.FolderBrowse(target='inputPath', button_color='#37373C')],
+    [sg.Text('Ouput path:', background_color='#181818', pad=(5,6.5)), sg.InputText(key='outputPath', tooltip=' where you want output rasters to go '), sg.FolderBrowse(target='outputPath', button_color='#37373C')],
     [sg.Text('Resolution:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='200', key='resolution')],
     [sg.Text('Area factor:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='1', key='areaFactor')],
     [sg.Text('Unique ID field:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='response_id', key='uniqueIdField')],
     [sg.Text('Importance field:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='value', key='importanceField')],
-    [sg.Text('All touched small:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='true', key='allTouchedSmall')],
+    [sg.Text('All touched small:', pad=(5,6.5), background_color='#181818'), sg.InputText(default_text='true', key='allTouchedSmall', tooltip=' Should small shapes have their values burned into ALL pixels \n they overlap, not just pixels whose centroid is overlapped? ')],
     [sg.Button('Submit', pad=(5,12), button_color='#37373C'), sg.Button('Cancel', pad=(5,12), button_color='#37373C')]
 ]
 
